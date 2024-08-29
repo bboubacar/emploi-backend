@@ -29,6 +29,6 @@ jobs:
 
             - name: Deploy to AlwaysData
               run: |
-                  rsync -avz --delete-after ./ bbcr_github@ssh.alwaysdata.com:/home/bbcr/www/
+                  rsync -avz --delete-after ./ bbcr_github@ssh-bbcr.alwaysdata.com:/home/bbcr/www/
               env:
                   USER: ${{ secrets.SSH_USERNAME }}
