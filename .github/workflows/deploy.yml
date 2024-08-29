@@ -30,7 +30,7 @@ jobs:
             - name: Deploy to AlwaysData
               run: |
                   echo "Starting deployment..."
-                  rsync -avz --delete-after ./ bbcr_github@ssh-bbcr.alwaysdata.net:/home/bbcr/www/
+                  rsync -avz --delete-after ./ bbcr@ssh-bbcr.alwaysdata.net:/home/bbcr/www/
                   echo "Deployment completed successfully!"
               env:
                   USER: ${{ secrets.SSH_USERNAME }}
