@@ -25,7 +25,7 @@ jobs:
                   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
             - name: Add SSH known hosts
-              run: ssh-keyscan ssh.alwaysdata.com >> ~/.ssh/known_hosts
+              run: ssh-keyscan ssh-bbcr.alwaysdata.com >> ~/.ssh/known_hosts
 
             - name: Deploy to AlwaysData
               run: |
