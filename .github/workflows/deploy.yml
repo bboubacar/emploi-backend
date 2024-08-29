@@ -33,7 +33,7 @@ jobs:
             - name: Deploy to AlwaysData
               run: |
                   echo "Starting deployment..."
-                  rsync -avz --delete-after --exclude='.github' --no-implied-dirs . bbcr_github@ssh-bbcr.alwaysdata.net:/home/bbcr/www/
+                  rsync -avz --delete-after --exclude='.github' ./ bbcr_github@ssh-bbcr.alwaysdata.net:/home/bbcr/www/
                   echo "Deployment completed successfully!"
               env:
                   USER: ${{ secrets.SSH_USERNAME }}
