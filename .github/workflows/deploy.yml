@@ -22,7 +22,7 @@ jobs:
 
             - name: Deploy to AlwaysData
               run: |
-                  ssh -i ~/.ssh/id_rsa bbcr_github@ssh-bbcr.alwaysdata.net << 'EOF'
-                    cd ~/www/emplois
-                    git pull origin main
+                  ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no bbcr_github@ssh-bbcr.alwaysdata.net << 'EOF'
+                    cd ~/www/emplois || { echo 'Failed to cd to the directory'; exit 1; }
+                    git pull origin main || { echo 'Failed to git pull'; exit 1; }
                   EOF
