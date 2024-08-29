@@ -25,12 +25,12 @@ jobs:
                   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
             - name: Add SSH known hosts
-              run: echo "Adding AlwaysData to known hosts..."
-                  ssh-keyscan ssh.alwaysdata.com >> ~/.ssh/known_hosts
-                  echo "Known hosts updated successfully!"
+              run: ssh-keyscan ssh.alwaysdata.com >> ~/.ssh/known_hosts
 
             - name: Deploy to AlwaysData
               run: |
+                  echo "Starting deployment..."
                   rsync -avz --delete-after ./ bbcr_github@ssh-bbcr.alwaysdata.com:/home/bbcr/www/
+                  echo "Deployment completed successfully!"
               env:
                   USER: ${{ secrets.SSH_USERNAME }}
