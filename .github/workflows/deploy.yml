@@ -1,0 +1,28 @@
+name: Deploy PHP Application to AlwaysData
+
+on:
+    push:
+        branches:
+            - main # Déclenche le déploiement lors d'un push sur la branche principale
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Setup SSH
+              run: |
+                  mkdir -p ~/.ssh
+                  echo "${{ secrets.ALWAYSDATA_SSH_KEY }}" > ~/.ssh/id_rsa
+                  chmod 600 ~/.ssh/id_rsa
+                  ssh-keyscan -H ssh.alwaysdata.com >> ~/.ssh/known_hosts
+
+            - name: Deploy to AlwaysData
+              run: |
+                  ssh -i ~/.ssh/id_rsa bbcr_github@ssh.alwaysdata.com << 'EOF'
+                    cd ~/www/emploi_backend
+                    git pull origin main
+                  EOF
