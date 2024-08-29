@@ -23,6 +23,6 @@ jobs:
             - name: Deploy to AlwaysData
               run: |
                   ssh -i ~/.ssh/id_rsa bbcr_github@ssh-bbcr.alwaysdata.net << 'EOF'
-                    cd ~/www/emploi_backend
+                    cd ~/www/home/bbcr
                     git pull origin main
                   EOF
