@@ -27,10 +27,13 @@ jobs:
             - name: Add SSH known hosts
               run: ssh-keyscan ssh-bbcr.alwaysdata.net >> ~/.ssh/known_hosts
 
+            - name: Debug - Check permissions on target directory
+              run: ssh bbcr_github@ssh-bbcr.alwaysdata.net "ls -ld /home/bbcr/www/"
+
             - name: Deploy to AlwaysData
               run: |
                   echo "Starting deployment..."
-                  rsync -avz --delete-after ./ bbcr_github@ssh-bbcr.alwaysdata.net:/home/bbcr/www/
+                  rsync -avz --delete-after --no-implied-dirs ./ bbcr_github@ssh-bbcr.alwaysdata.net:/home/bbcr/www/
                   echo "Deployment completed successfully!"
               env:
                   USER: ${{ secrets.SSH_USERNAME }}
