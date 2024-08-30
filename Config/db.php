@@ -12,12 +12,12 @@ if ($_SERVER["SERVER_ADDR"] !== "127.0.0.1") {
     // DBUSER = bcr
     // DBPASS = Bouba-Web2022
     // DBNAME = bcr_offres_emploi
-    print_r($_ENV);
-    define('SGBDR', getenv('SGBDR'));
-    define('DBHOST', getenv('DBHOST'));
-    define('DBUSER', getenv('DBUSER'));
-    define('DBPASS', getenv('DBPASS'));
-    define('DBNAME', getenv('DBNAME'));
+    print_r($_SERVER);
+    define('SGBDR', $_SERVER('SGBDR'));
+    define('DBHOST', $_SERVER('DBHOST'));
+    define('DBUSER', $_SERVER('DBUSER'));
+    define('DBPASS', $_SERVER('DBPASS'));
+    define('DBNAME', $_SERVER('DBNAME'));
 } else {
     define('SGBDR', 'mysql');
     define('DBHOST', 'localhost');
