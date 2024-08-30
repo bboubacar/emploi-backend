@@ -6,13 +6,6 @@ if ($_SERVER["SERVER_ADDR"] !== "127.0.0.1") {
     // define('DBUSER', 'bcr');
     // define('DBPASS', 'Bouba-Web2022');
     // define('DBNAME', 'bcr_offres_emploi');
-    //     SGBDR = mysql
-    // SGBDR = mysql
-    // DBHOST = mysql-bcr.alwaysdata.net
-    // DBUSER = bcr
-    // DBPASS = Bouba-Web2022
-    // DBNAME = bcr_offres_emploi
-    print_r($_ENV);
     define('SGBDR', $_ENV['SGBDR']);
     define('DBHOST', $_ENV['DBHOST']);
     define('DBUSER', $_ENV['DBUSER']);
