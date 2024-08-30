@@ -20,6 +20,6 @@ if ($_SERVER["SERVER_ADDR"] !== "127.0.0.1") {
 }
 
 // Clé pour le token
-define('SECRETE_KEY_C', 'stagefw16_candidats');
-define('SECRETE_KEY_R', 'stagefw16_representants');
-define('SECRETE_KEY_A', 'stagefw16_administrateurs');
+define('SECRETE_KEY_C',  $_ENV['SECRETE_KEY_C']);
+define('SECRETE_KEY_R',  $_ENV['SECRETE_KEY_C']);
+define('SECRETE_KEY_A',  $_ENV['SECRETE_KEY_C']);
