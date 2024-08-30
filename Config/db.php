@@ -12,7 +12,7 @@ if ($_SERVER["SERVER_ADDR"] !== "127.0.0.1") {
     // DBUSER = bcr
     // DBPASS = Bouba-Web2022
     // DBNAME = bcr_offres_emploi
-    print_r($_SERVER);
+    print_r($_ENV);
     define('SGBDR', getenv('SGBDR'));
     define('DBHOST', getenv('DBHOST'));
     define('DBUSER', getenv('DBUSER'));
