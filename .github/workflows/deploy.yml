@@ -27,13 +27,8 @@ jobs:
             - name: Add SSH known hosts
               run: ssh-keyscan ssh-bbcr.alwaysdata.net >> ~/.ssh/known_hosts
 
-            - name: Debug - Check permissions on target directory
-              run: ssh bbcr_github@ssh-bbcr.alwaysdata.net "ls -ld /home/bbcr/www/"
-
-            - name: Deploy to AlwaysData
+            - name: Deploy to AlwaysData with SCP
               run: |
                   echo "Starting deployment..."
                   scp -r -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa "${{ github.workspace }}/" bbcr_github@ssh-bbcr.alwaysdata.net:/home/bbcr/www/
                   echo "Deployment completed successfully!"
-              env:
-                  USER: ${{ secrets.SSH_USERNAME }}
