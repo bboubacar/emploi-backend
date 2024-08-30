@@ -33,7 +33,7 @@ jobs:
             - name: Deploy to AlwaysData
               run: |
                   echo "Starting deployment..."
-                  rsync -avz --ignore-times --delete --exclude='.github' --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r "${{ github.workspace }}/" bbcr_github@ssh-bbcr.alwaysdata.net:/home/bbcr/www/
+                  scp -r -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa "${{ github.workspace }}/" bbcr_github@ssh-bbcr.alwaysdata.net:/home/bbcr/www/
                   echo "Deployment completed successfully!"
               env:
                   USER: ${{ secrets.SSH_USERNAME }}
