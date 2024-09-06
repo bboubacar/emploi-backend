@@ -6,8 +6,11 @@ use App\Controllers\UsersController;
 use App\Src\Main;
 
 // On definit une constante contenat le dossier racine du projet
-if ($_SERVER["SERVER_ADDR"] !== "127.0.0.1") {
-    define('ROOT', $_SERVER["DOCUMENT_ROOT"]);
+if ($_SERVER["SERVER_NAME"] !== "localhost") {
+    if (str_ends_with($_SERVER["DOCUMENT_ROOT"], '/'))
+        define('ROOT', $_SERVER["DOCUMENT_ROOT"]);
+    else
+        define('ROOT', $_SERVER["DOCUMENT_ROOT"] . '/');
 } else {
     define('ROOT', dirname(__DIR__) . '/');
 }
