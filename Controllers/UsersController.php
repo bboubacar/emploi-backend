@@ -174,6 +174,26 @@ class UsersController extends Controller
         else throw new Exception();
     }
 
+    public function updatepasswd(array $role)
+    {
+        $current_role = array_shift($role);
+        $payload = $this->getToken($current_role);
+
+        $update_attr = [USERS['email'], USERS['pwrd']];
+        $data = json_decode(file_get_contents("php://input"));
+
+        $data = $this->validateUser($data, $update_attr, $current_role);
+
+        $user = new UsersModel;
+        $data->{USERS['pwrd']} = password_hash($data->{USERS['pwrd']}, PASSWORD_ARGON2I);
+
+        // On hydrate
+        $user->hydrate($data);
+        if ($user->update(USERS['email'], $payload->{'id'}))
+            $this->response(CODE['200']['code'], true, CODE['200']['text']);
+        else throw new Exception();
+    }
+
     /**
      * Verify if email is already used
      *
